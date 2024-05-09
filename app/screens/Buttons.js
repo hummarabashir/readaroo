@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -19,6 +19,7 @@ import {
   Alert,
   ImageBackground,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // import Blob from './assets/images/blob.svg';
@@ -30,6 +31,18 @@ import {
 
 export default function Buttons({navigation}) {
     // StatusBar.setBarStyle('dark-content', true);
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+      const getName = async () => {
+        const savedName = await AsyncStorage.getItem('kidName');
+        if (savedName) {
+          setName(savedName);
+        }
+      };
+  
+      getName();
+    }, []);
     return (
       <>
       <StatusBar barStyle= "light-content" hidden= {false} backgroundColor="#1f354b" translucent= {false} />
@@ -43,7 +56,7 @@ export default function Buttons({navigation}) {
     <Image source={require('../assets/images/bee-logo.png')}
                   style={styles.image} />
                   <View style={styles.welcomeText}>
-                  <Text style={styles.welcomeText}>Welcome Little Learner !!</Text>
+                  <Text style={styles.welcomeText}>{name || 'Kid'}, Welcome Little Learner !!</Text>
                   </View>
                 {/* </View> */}
                 <View style={styles.pressbox}>
@@ -94,6 +107,19 @@ export default function Buttons({navigation}) {
                   source={require('../assets/images/flower.png')}/>
                   </View>
                 </Pressable>
+
+                <Pressable style={styles.box5} onPress={() => navigation.navigate('About')}>
+                <Text style={styles.heading}>Settings</Text>
+
+                  <View style={{width: "60%"}}>
+                  <Text style={styles.phrasetext}>Manage your preferences</Text>
+                  </View>
+                  <View style={{width: "40%"}}>
+                  <Image style={styles.boxImage}
+                  source={require('../assets/images/beehive.png')}/>
+                  </View>
+                </Pressable>
+
                 </View>
 </ImageBackground>
 {/* </ScrollView> */}
@@ -191,6 +217,16 @@ box3: {
 },
 box4: {
   backgroundColor: '#f878b5',
+  width: 220,
+  borderRadius: 16,
+  padding: 20,
+  color: '#ffffff',
+  marginTop: 15,
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+},
+box5: {
+  backgroundColor: '#6b74e0',
   width: 220,
   borderRadius: 16,
   padding: 20,

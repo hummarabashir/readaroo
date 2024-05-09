@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Alert } from "react-native";
 
 const App = ({navigation}) => {
 
@@ -151,7 +151,7 @@ const shuffleQuestions = () => {
       }
     }
       else {
-        alert("Please fill all the blanks correctly!");
+        Alert.alert("Play On!","Ready, Set, Fill! Let's Go!");
       }
     };
     const handleRestartButtonClick = () => {

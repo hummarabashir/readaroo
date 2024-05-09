@@ -32,9 +32,23 @@ import {
 // import { SvgXml, ClipPath } from 'react-native-svg';
 import Greetings from './screens/greetings';
 import { createStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-const Home = ({navigation}) => (
+const Home = ({navigation}) => {
+  const checkName = async () => {
+    try {
+      const name = await AsyncStorage.getItem('kidName');
+      if (name) {
+        navigation.navigate('Buttons');
+      } else {
+        navigation.navigate('Name');
+      }
+    } catch (error) {
+      console.error('Error checking name:', error);
+    }
+  };
+  return(
   <>
   <View style={{backgroundColor: "#1f354b"}}>
   <StatusBar barStyle = "light-content" hidden = {true} translucent />
@@ -68,7 +82,7 @@ const Home = ({navigation}) => (
         onPress={() => navigation.navigate('Buttons')}
       />
       </View> */}
-      <TouchableOpacity style={styles.hexagon} onPress={() => navigation.navigate('Buttons')}>
+      <TouchableOpacity style={styles.hexagon} onPress={checkName}>
       <View style={styles.hexagonInner}>
         <Text style={styles.hexagonText}>Little 2</Text>
       </View>
@@ -81,7 +95,7 @@ const Home = ({navigation}) => (
     </ImageBackground>
   </View>
   </>
-);
+)};
 
 const styles = StyleSheet.create({
   container: {
