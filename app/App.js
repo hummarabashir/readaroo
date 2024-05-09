@@ -22,6 +22,8 @@
 import React, {Component, useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 import Home from './screens/Home';
+import Name from './screens/Name';
+import About from './screens/About';
 import Buttons from './screens/Buttons';
 import AlphaTots from './screens/AlphaTots';
 import AlphaPhonics from './screens/AlphaPhonics';
@@ -39,6 +41,8 @@ import WordGame from './screens/WordGame';
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
+import CustomBackButton from './screens/screens/CustomBackButton';
+
 
 const Stack = createNativeStackNavigator()
 export default function App() { 
@@ -49,6 +53,19 @@ export default function App() {
       <NavigationContainer> 
         <Stack.Navigator> 
           <Stack.Screen name="Home" component = {Home} options={{ headerShown: false }} /> 
+          <Stack.Screen name="Name" component = {Name}   options={{
+      title: '',
+      
+      headerStyle: {
+        backgroundColor: '#1f354b',
+      },
+      headerTintColor: '#6cdfef',
+      headerShadowVisible: false,
+      headerTitleStyle: {
+        color: 'white'
+      },
+      headerBackTitle: 'Home',
+    }}/> 
           <Stack.Screen name="Buttons" component = {Buttons}   options={{
       title: '',
       
@@ -60,6 +77,7 @@ export default function App() {
       headerTitleStyle: {
         color: 'white'
       },
+      headerLeft: () => <CustomBackButton/>,
       // headerRight: () => (
       //   <Button
       //     onPress={() => alert('This is a button!')}
@@ -67,7 +85,7 @@ export default function App() {
       //     color="#fff"
       //   />
       // ),
-      headerBackTitle: 'Home',
+      // headerBackTitle: 'Home',
     }}/> 
     {/* options={{
     header: () =>
@@ -80,6 +98,18 @@ export default function App() {
           </View>
         ),
           }} */}
+              <Stack.Screen name="About" component = {About}   options={{
+      title: '',
+      
+      headerStyle: {
+        backgroundColor: '#1f354b',
+      },
+      headerTintColor: '#6cdfef',
+      headerShadowVisible: false,
+      headerTitleStyle: {
+        color: 'white'
+      },
+    }}/>
           <Stack.Screen name="AlphaTots" component = {AlphaTots} options={{ headerTitle: "AlphaTots",     headerStyle: {
         backgroundColor: '#1f354b',
       },
