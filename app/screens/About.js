@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,9 +16,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KidContext } from './screens/KidContext';
 
 
 export default function Buttons({navigation}) {
+  const { setKidName } = useContext(KidContext);
+
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -32,11 +35,28 @@ export default function Buttons({navigation}) {
     getName();
   }, []);
 
+  const onChangeText = async (inputText) => {
+    if (inputText.length <= 6 && !inputText.includes(' ')) {
+      await AsyncStorage.setItem('name', inputText);
+      setName(inputText);
+    }
+  };
 
-//   const clearName = async () => {
-//     await AsyncStorage.removeItem('kidName');
-//     navigation.navigate('Home');
-//   }; 
+  const saveName = async () => {
+    // await AsyncStorage.setItem('kidName', name);
+    if (name.trim() !== '') {
+      setKidName(name);
+      await AsyncStorage.setItem('kidName', name);
+      Alert.alert("Great, Little Learner!", 'Your account has been updated!');
+    } else {
+      const savedName = await AsyncStorage.getItem('kidName');
+      if (savedName) {
+        setName(savedName);
+      }
+      Alert.alert("Attention, Little Learner!", 'Please enter your name/nickname to update your account!');
+    }
+
+  };
 
 const handleDeleteData = async () => {
     Alert.alert(
@@ -81,16 +101,30 @@ const handleDeleteData = async () => {
       <View style={styles.container}> 
 
           <ImageBackground source={require('../assets/images/blob3.png')} resizeMode="contain" style={styles.bgimage}>
-          <View style={styles.welcomeText}>
-                  <Text style={styles.welcomeText}>Profile Settings!!</Text>
-                  <Text style={styles.welcomeSubText}>hello {name || 'Kid'}</Text>
-                  </View>
-    <Image source={require('../assets/images/bee-logo.png')}
+          <View style={styles.profile}>
+                  <Text style={styles.welcomeText}>Profile Setting</Text>
+                  {/* <Text style={styles.welcomeSubText}>hello {name || 'Kid'}</Text> */}
+                  <Image source={require('../assets/images/updateProfile.png')}
                   style={styles.image} />
+                  <View style={styles.inputBlock}>
+      <Text style={styles.inputText}>Update your name/nickname?</Text>
+      <Text style={styles.inputSubText}>(only 6 characters allowed / no space)</Text>
+      <TextInput
+        placeholder="Name"
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={name}
+        maxLength={6}
+      />
+      </View>
                   <View>
+                  <TouchableOpacity style={styles.buttonUpdate} onPress={saveName}>
+          <Text style={styles.buttonText}>Update Account</Text>
+          </TouchableOpacity>
       <TouchableOpacity style={styles.buttonBlock} onPress={handleDeleteData}>
           <Text style={styles.buttonText}>Delete Account</Text>
           </TouchableOpacity>
+          </View>
 
       {/* </TouchableOpacity> */}
     </View>
@@ -125,17 +159,22 @@ const handleDeleteData = async () => {
       alignItems: 'center',
     },
     image: {
-    width: 140,
-    height: 140,  
+    width: 220,
+    height: 220,  
     alignSelf: "center"
   },
+  profile: {
+    width: 300
+  },
   welcomeText: {
-    alignSelf: 'center',
-    color: '#C5E4EE',
+    // alignSelf: 'center',
+    textAlign: 'left',
+    color: '#f7bf31',
     fontSize: 26,
     paddingBottom: 8,
-    fontWeight: "900",
-    textTransform: "uppercase"
+    fontWeight: "600",
+    textTransform: "uppercase",
+    marginBottom: 20
   },
   welcomeSubText: {
     alignSelf: 'center',
@@ -144,12 +183,41 @@ const handleDeleteData = async () => {
     paddingBottom: 8,
     fontWeight: "200",
   },
-  buttonBlock: {
-    backgroundColor: "#f878b5",
+  inputBlock: {
+    marginBottom: 12,
+  },
+  inputText: {
+    color: '#6cdfef',
+    fontSize: 17,
+    marginBottom: 3,
+  },
+  inputSubText: {
+    color: '#fff',
+    fontSize: 8,
+    marginBottom: 16,
+  },
+  input: {
+    height: 40,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: "#6b74e0",
+    color: "#fff",
+  },
+  buttonUpdate: {
+    backgroundColor: "#6cdfef",
     paddingTop: 10,
     paddingBottom: 10,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 10
+},
+buttonBlock: {
+  backgroundColor: "#f878b5",
+  paddingTop: 10,
+  paddingBottom: 10,
+  alignItems: "center",
+  justifyContent: "center",
+  marginBottom: 20
 },
 buttonText: {
     fontWeight: "400",

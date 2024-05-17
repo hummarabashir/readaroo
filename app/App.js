@@ -19,8 +19,10 @@
 //     justifyContent: 'center',
 //   },
 // });
-import React, {Component, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Home from './screens/Home';
 import Name from './screens/Name';
 import About from './screens/About';
@@ -42,14 +44,26 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
 import CustomBackButton from './screens/screens/CustomBackButton';
-
+import { KidContext } from './screens/screens/KidContext';
 
 const Stack = createNativeStackNavigator()
 export default function App() { 
   // useEffect(() => {
   //   SplashScreen.hide();
   // }, []);
+
+    const [kidName, setKidName] = useState('');
+  
+    AsyncStorage.getItem('kidName').then((value) => {
+      if (value) {
+        setKidName(value);
+      }
+    });
+
+
+
     return ( 
+      <KidContext.Provider value={{ kidName, setKidName }}>
       <NavigationContainer> 
         <Stack.Navigator> 
           <Stack.Screen name="Home" component = {Home} options={{ headerShown: false }} /> 
@@ -161,7 +175,7 @@ export default function App() {
       headerTitleStyle: {
         color: 'white'
       },}} />
-          <Stack.Screen name="Quiz" component = {Quiz} options={{ headerTitle: "Trivia Quiz",  headerStyle: {
+          <Stack.Screen name="Quiz" component = {Quiz} options={{ headerTitle: "TriviaTots",  headerStyle: {
         backgroundColor: '#1f354b',
       },
       headerTintColor: '#6cdfef',
@@ -221,6 +235,7 @@ export default function App() {
       }, }} /> 
         </Stack.Navigator> 
       </NavigationContainer> 
+      </KidContext.Provider>
     );
   }
 

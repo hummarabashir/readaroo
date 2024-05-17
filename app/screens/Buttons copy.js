@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -20,7 +20,6 @@ import {
   ImageBackground,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { KidContext } from './screens/KidContext';
 
 
 // import Blob from './assets/images/blob.svg';
@@ -31,8 +30,6 @@ import { KidContext } from './screens/KidContext';
 
 
 export default function Buttons({navigation}) {
-  const { kidName } = useContext(KidContext);
-
     // StatusBar.setBarStyle('dark-content', true);
     const [name, setName] = useState('');
     useEffect(() => {
@@ -57,7 +54,7 @@ export default function Buttons({navigation}) {
     <Image source={require('../assets/images/bee-logo.png')}
                   style={styles.image} />
                   <View style={styles.welcomeText}>
-                  <Text style={styles.welcomeText}>{kidName || 'Kid'}, Welcome Little Learner !!</Text>
+                  <Text style={styles.welcomeText}>{name || 'Kid'}, Welcome Little Learner !!</Text>
                   </View>
                 {/* </View> */}
                 <View style={styles.pressbox}>
