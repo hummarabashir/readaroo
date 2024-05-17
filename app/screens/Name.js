@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,9 +16,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KidContext } from './screens/KidContext';
 
 
 export default function Buttons({navigation}) {
+  const { setKidName } = useContext(KidContext);
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function Buttons({navigation}) {
   const saveName = async () => {
     // await AsyncStorage.setItem('kidName', name);
     if (name.trim() !== '') {
+      setKidName(name);
       await AsyncStorage.setItem('kidName', name);
        navigation.navigate('Buttons')
     } else {
@@ -64,9 +67,9 @@ export default function Buttons({navigation}) {
             <View style={styles.welcomeBlock}>
           {/* <View style={styles.welcomeText}>
                   <Text style={styles.welcomeText}>Welcome</Text>
-                  <Text style={styles.welcomeSubText}>to readAroo!</Text>
+                  <Text style={styles.welcomeSubText}>Little Learner!</Text>
                   </View> */}
-    <Image source={require('../assets/images/bee-logo.png')}
+    <Image source={require('../assets/images/profile1.png')}
                   style={styles.image} />
                   <View style={styles.inputBlock}>
       <Text style={styles.inputText}>Whats your name/nickname?</Text>
@@ -119,8 +122,8 @@ export default function Buttons({navigation}) {
       alignItems: 'center',
     },
     image: {
-    width: 140,
-    height: 140,  
+    width: 280,
+    height: 280,  
     alignSelf: "center"
   },
   welcomeBlock: {
@@ -141,7 +144,6 @@ export default function Buttons({navigation}) {
     fontWeight: "200",
   },
   inputBlock: {
-    marginTop: 30,
     marginBottom: 12,
   },
   inputText: {
@@ -167,6 +169,7 @@ export default function Buttons({navigation}) {
     paddingBottom: 10,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 35
 },
 buttonText: {
     fontWeight: "400",

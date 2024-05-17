@@ -17,6 +17,8 @@ Check out the live app: [readaroo](https:// )
 <img alt="XCode" src="https://img.shields.io/badge/xcode-%230671D5.svg?style=for-the-badge&logo=xcode&logoColor=%2361DAFB"/>
 <img alt="Expo" src="https://img.shields.io/badge/Expo-%230671D5.svg?style=for-the-badge&logo=expo&logoColor=%2361DAFB"/>
 <img alt="Android Studio" src="https://img.shields.io/badge/Android Studio-%230671D5.svg?style=for-the-badge&logo=androidstudio&logoColor=%2361DAFB"/>
+<img alt="AsyncStorage" src="https://img.shields.io/badge/AsyncStorage-%230671D5.svg?style=for-the-badge&logo=androidstudio&logoColor=%2361DAFB"/>
+<img alt="React Context API" src="https://img.shields.io/badge/ReactContext-%230671D5.svg?style=for-the-badge&logo=androidstudio&logoColor=%2361DAFB"/>
 
 ## 🗣️ About this project
 
