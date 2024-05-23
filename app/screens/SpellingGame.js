@@ -311,8 +311,8 @@ const shuffleQuestions = () => {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 16,
-        height: 200,
-        width: 200,
+        height: 240,
+        width: 240,
         backgroundColor: "#0671d5"
       },
       image: {
@@ -331,7 +331,7 @@ const shuffleQuestions = () => {
     display: "flex",
     gap: 10,
     flexDirection: "row",
-    width: 200,
+    width: 240,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30
@@ -356,7 +356,7 @@ const shuffleQuestions = () => {
         display: "flex",
         gap: 10,
         flexDirection: "row",
-        width: 200,
+        width: 240,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 25,

@@ -111,6 +111,7 @@ const handleDeleteData = async () => {
       <Text style={styles.inputSubText}>(only 6 characters allowed / no space)</Text>
       <TextInput
         placeholder="Name"
+        placeholderTextColor="#294760"
         style={styles.input}
         onChangeText={onChangeText}
         value={name}

@@ -436,6 +436,7 @@ const FlashCardsApp = () => {
           </Text> */}
                             {/* <SvgXml xml={xml} style={styles.svg}/> */}
                             <Image source={require('../assets/images/svg.png')}
+                            style= {styles.toggleimage}
                    />
         </TouchableOpacity>
       <View style={styles.bdayDecorContainer}>
@@ -491,7 +492,7 @@ const FlashCardsApp = () => {
     </View> */}
      <TouchableOpacity style={styles.playButton} onPress={isPlaying ? playAudio : playAudio}>
      {isPlaying ? <Image style={styles.volumeButton} source={require('../assets/images/media/volume.png')} /> : <Image style={styles.volumeButton} source={require('../assets/images/media/volume.png')} />}
-      </TouchableOpacity>
+          <View style={styles.cardOne}>
           <View style={styles.bdayBanner}>
           <Text style={styles.headingTop}>{currentCard.letterCase}</Text>
           </View>
@@ -499,6 +500,8 @@ const FlashCardsApp = () => {
           <View style={styles.bdayBanner}>
           <Text style={styles.headingBottom}>{currentCard.heading}</Text>
           </View>
+          </View>
+          </TouchableOpacity>
           </>
         )}
         </View>
@@ -608,17 +611,27 @@ const styles = StyleSheet.create({
     width: 40,
     justifyContent: "center",
     alignItems: "center",
-    padding: 6,
+    padding: 8,
     marginTop: 5,
     backgroundColor: "#1f354b",
     borderRadius: 8,
     shadowOffset: { width: 1, height: 1 },
     // shadowColor: "white",
+    elevation: 20,
     shadowOpacity: 1,
+  },
+  toggleimage: {
+    width: 30
   },
   volumeButton: {
     width: 40,
     height: 40
+  },
+  cardOne: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 320
   },
   // image: {
   //   width: 200,
@@ -644,8 +657,8 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    width: 160,
-    height: 160,
+    width: 180,
+    height: 180,
     resizeMode: "cover",
   },
   bdayDecorContainer: {
@@ -665,11 +678,11 @@ const styles = StyleSheet.create({
     // backgroundColor: "#1f354b",
     // paddingVertical: 12,
     // paddingHorizontal: 40,
-    margin: 30,
+    marginBottom: 20,
     // fontWeight: "bold",
     fontSize: 72,
     color: "white",
-    fontWeight: "bold",
+    fontWeight: "900",
     // textTransform: "uppercase",
     flexGrow: 0
   },
@@ -677,7 +690,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "#1f354b",
     // paddingVertical: 12,
     // paddingHorizontal: 40,
-    margin: 36,
+    marginTop: 30,
     fontSize: 26,
     color: "white",
     // fontWeight: "bold",
@@ -738,8 +751,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     // width: "80%",
-    marginBottom: 90,
-    marginTop: 50
+    marginBottom: 50,
+    marginTop: 40
   },
   navigationButton: {
     flex: 1,

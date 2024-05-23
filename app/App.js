@@ -175,7 +175,7 @@ export default function App() {
       headerTitleStyle: {
         color: 'white'
       },}} />
-          <Stack.Screen name="Quiz" component = {Quiz} options={{ headerTitle: "TriviaTots",  headerStyle: {
+          <Stack.Screen name="Quiz" component = {Quiz} options={{ headerTitle: "Trivia Tots",  headerStyle: {
         backgroundColor: '#1f354b',
       },
       headerTintColor: '#6cdfef',

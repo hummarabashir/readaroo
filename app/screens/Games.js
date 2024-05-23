@@ -44,7 +44,7 @@ import {
 
                 <Pressable style={styles.box} onPress={() => navigation.navigate('Quiz')}>
                   <View>
-                  <Text style={styles.heading}>Quiz</Text>
+                  <Text style={styles.heading}>Trivia Tots</Text>
                   <Text style={styles.phrasetext}>Phase 2</Text>
                   </View>
                 </Pressable>
@@ -135,7 +135,7 @@ phrasetextBlack: {
   },
 box: {
   backgroundColor: '#6b74e0',
-  width: 230,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -146,7 +146,7 @@ box: {
 },
 box2: {
   backgroundColor: '#f878b5',
-  width: 230,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#000000',
@@ -156,7 +156,7 @@ box2: {
 },
 box3: {
   backgroundColor: '#0671d5',
-  width: 230,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -166,7 +166,7 @@ box3: {
 },
 box4: {
   backgroundColor: '#11c684',
-  width: 230,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -176,18 +176,18 @@ box4: {
 },
 box5: {
     backgroundColor: '#6cdfef',
-    width: 230,
+    width: 260,
     borderRadius: 16,
     padding: 20,
     color: '#000000',
     marginTop: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 60
+    marginBottom: 30
   },
   box6: {
     backgroundColor: '#f7bf31',
-    width: 230,
+    width: 260,
     borderRadius: 16,
     padding: 20,
     color: '#000000',
