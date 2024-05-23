@@ -337,8 +337,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 16,
-    height: 200,
-    width: 200,
+    height: 240,
+    width: 240,
     backgroundColor: "#0671d5"
   },
   image: {
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 8,
     marginVertical: 8,
-    width: 200,
+    width: 240,
   },
   optionButtonText: {
     color: "#000",

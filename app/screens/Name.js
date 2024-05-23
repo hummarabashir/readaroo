@@ -76,6 +76,7 @@ export default function Buttons({navigation}) {
       <Text style={styles.inputSubText}>(only 6 characters allowed / no space)</Text>
       <TextInput
         placeholder="Name"
+        placeholderTextColor="#294760"
         style={styles.input}
         onChangeText={onChangeText}
         value={name}
@@ -122,12 +123,12 @@ export default function Buttons({navigation}) {
       alignItems: 'center',
     },
     image: {
-    width: 280,
-    height: 280,  
+    width: 320,
+    height: 260,  
     alignSelf: "center"
   },
   welcomeBlock: {
-    width: 280
+    width: 320
   },
   welcomeText: {
     alignSelf: 'center',
@@ -169,7 +170,7 @@ export default function Buttons({navigation}) {
     paddingBottom: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 35
+    marginBottom: 40
 },
 buttonText: {
     fontWeight: "400",

@@ -178,13 +178,17 @@ const alphabetColors = {
       width: 40,
       justifyContent: "center",
       alignItems: "center",
-      padding: 6,
+      padding: 8,
       backgroundColor: "#1f354b",
       borderRadius: 8,
       shadowOffset: { width: 1, height: 1 },
       // shadowColor: "white",
+      elevation: 20,
       shadowOpacity: 1,
       marginTop: 5
+    },
+    image: {
+      width: 30
     },
     toggleButtonText: {
       color: "#fff",
@@ -197,11 +201,11 @@ const alphabetColors = {
       flexWrap: "wrap",
       gap: 10,
       paddingBottom: 2,
-      width: 300,
+      width: 320,
       justifyContent: "center",
       alignItems: "center",
       marginTop: 30,
-      marginBottom: 30
+      marginBottom: 20
     },
     letterButton: {
       width: "22%",

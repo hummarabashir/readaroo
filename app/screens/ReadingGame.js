@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 16,
     backgroundColor: "#0671d5",
-    width: 200,
+    width: 240,
     padding: 30
   },
   word: {
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     display: "flex",
     gap: 10,
     flexDirection: "row",
-    width: 200,
+    width: 240,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40
@@ -363,16 +363,16 @@ const styles = StyleSheet.create({
     borderColor: "black",
     padding: 10,
     borderRadius: 10,
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 70,
     backgroundColor: "#6cdfef"
   },
   selectedOptionButton: {
     backgroundColor: '#f878b5',
   },
   image: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     // width: "100%"
     display: "flex",
     alignItems: "center",

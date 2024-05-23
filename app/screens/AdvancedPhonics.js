@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     gap: 10,
     paddingBottom: 2,
-    width: 300,
+    width: 320,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30
+    marginBottom: 20
   },
   letterButton: {
     width: "46%",

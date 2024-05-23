@@ -187,7 +187,7 @@ pressbox: {
 },
 box: {
   backgroundColor: '#6b74e0',
-  width: 220,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -198,7 +198,7 @@ box: {
 },
 box2: {
   backgroundColor: '#11c684',
-  width: 220,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -208,7 +208,7 @@ box2: {
 },
 box3: {
   backgroundColor: '#0671d5',
-  width: 220,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -218,7 +218,7 @@ box3: {
 },
 box4: {
   backgroundColor: '#f878b5',
-  width: 220,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -228,7 +228,7 @@ box4: {
 },
 box5: {
   backgroundColor: '#6b74e0',
-  width: 220,
+  width: 260,
   borderRadius: 16,
   padding: 20,
   color: '#ffffff',
@@ -238,8 +238,8 @@ box5: {
   marginBottom: 20
 },
 boxImage: {
-  width: 42,
-  height: 42,
+  width: 52,
+  height: 52,
   marginLeft: 45,
   marginTop: 10,
 },

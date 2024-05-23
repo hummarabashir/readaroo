@@ -1,34 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+const GreetingContext = React.createContext();
+
+const GreetingProvider = ({ children }) => {
+  const currentHour = new Date().getHours();
+  let greetingMessage = '';
+
+  if (currentHour >= 5 && currentHour < 12) {
+    greetingMessage = 'Good Morning!';
+  } else if (currentHour >= 12 && currentHour < 17) {
+    greetingMessage = 'Good Afternoon!';
+  } else {
+    greetingMessage = 'Good Evening!';
+  }
+
+        return (
+          <GreetingContext.Provider value={greetingMessage}>
+            {children}
+          </GreetingContext.Provider>
+        );
+      };
+      const GreetingMessage = () => {
+        const greetingMsg = useContext(GreetingContext);
+      
+        return (
+          <View>
+            <Text style={styles.greetings}>{greetingMsg}</Text>
+          </View>
+        );
+      };
 
 const Greetings = () => {
-    const [greeting, setGreeting] = useState('');
-    useEffect(() => {
-        const currentTime = new Date().getHours();
-    
-        if (currentTime < 12) {
-          setGreeting('Good Morning!');
-        } else if (currentTime < 18) {
-          setGreeting('Good Afternoon!');
-        } else {
-          setGreeting('Good Evening!');
-        }
-      }, []);
-
-    // let myDate = new Date();
-    // let hours= myDate.getHours();
-    // let greet;
-
-    // if (hours < 12)
-    //     greet =  "morning";
-    // else if (hours >= 12 && hours <= 17)
-    //     greet = "afternoon";
-    // else if (hours >= 17 && hours <= 24)
-    //    greet = "evening";
-    
-    return <Text style={styles.greetings}>{greeting}</Text>
-}
-
+  return (
+    <GreetingProvider>
+      <GreetingMessage />
+    </GreetingProvider>
+  );
+};
 export default Greetings 
 
 var styles = StyleSheet.create({
@@ -40,3 +49,4 @@ var styles = StyleSheet.create({
         marginBottom: 40
       }
 });
+

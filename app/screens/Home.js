@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -30,9 +30,39 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 // import { SvgXml, ClipPath } from 'react-native-svg';
-import Greetings from './screens/greetings';
+// import Greetings from './screens/greetings';
 import { createStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const GreetingMessageContext = createContext();
+
+const GreetingMessageProvider = ({ children }) => {
+  const [greeting, setGreeting] = useState('');
+
+  useEffect(() => {
+    const updateGreeting = () => {
+      const currentTime = new Date().getHours();
+      if (currentTime >= 5 && currentTime < 12) {
+        setGreeting('Good Morning!');
+      } else if (currentTime >= 12 && currentTime < 17) {
+        setGreeting('Good Afternoon!');
+      } else {
+        setGreeting('Good Evening!');
+      }
+    };
+
+    updateGreeting();
+    const interval = setInterval(updateGreeting, 60000); // Refresh every minute
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <GreetingMessageContext.Provider value={greeting}>
+      {children}
+    </GreetingMessageContext.Provider>
+  );
+};
 
 
 const Home = ({navigation}) => {
@@ -71,7 +101,15 @@ const Home = ({navigation}) => {
                 </View>
                 {/* </ImageBackground> */}
 
-                <Greetings/>
+                {/* <Greetings/> */}
+                <GreetingMessageProvider>
+      <View>
+        <GreetingMessageContext.Consumer>
+          {(greeting) => <Text style={styles.greetings}>{greeting}</Text>}
+        </GreetingMessageContext.Consumer>
+      </View>
+    </GreetingMessageProvider>
+           
                 {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('Buttons')}>
                     <Text>Let's GO -></Text>
 </TouchableOpacity> */}
@@ -110,6 +148,13 @@ const styles = StyleSheet.create({
   bgimage: {
     flex: 1,
     justifyContent: 'center',
+  },
+  greetings: {
+    fontSize: 14,
+    color: '#ffffff',
+    marginTop: 14,
+    textAlign: 'center',
+    marginBottom: 40
   },
   text: {
     color: 'white',
